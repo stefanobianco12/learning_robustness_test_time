@@ -60,22 +60,22 @@ def adjust_learning_rate(optimizer, epoch,lr_initial,dataset):
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', type=str, default='VGG16',
+    parser.add_argument('--model', type=str, default='WideResnet',
                         choices=['VGG11', 'VGG16', 'VGG19', 'DenseNet161', 'InceptionV3', 'Resnet18', 'Resnet50','WideResnet','vit_b_16'])
     parser.add_argument('--dataset', type=str, default='cifar10',
-                        choices=['cifar10', 'cifar100', 'imagenet'])
+                        choices=['cifar10', 'imagenet'])
     parser.add_argument('--loss', type=str, choices=['tgra','tradesU','tgra_fgsm','mart','dkl', 'trades','pgd'], default='tgra', help="Type of loss function to use.")
     parser.add_argument('--beta', type=int, default=0)
-    parser.add_argument('--lr', type=float, default=1e-4, metavar='LR',
+    parser.add_argument('--lr', type=float, default=1e-3, metavar='LR',
                     help='learning rate')
     parser.add_argument('--scheduler', type=str, choices=['vanilla','cosineannealing', 'decay','decay_warmup'], default='vanilla')
     parser.add_argument('--eps', type=int, default=8)
     parser.add_argument('--step_size', type=int, default=1)
-    parser.add_argument('--num_step', type=int, default=1)
+    parser.add_argument('--num_step', type=int, default=5)
     parser.add_argument('--frq_test', type=int, default=0)
     parser.add_argument('--severity', type=int, default=0)
     parser.add_argument('--seed', type=int, default=0)
-    parser.add_argument('--epoch', type=int, default=10)
+    parser.add_argument('--epoch', type=int, default=30)
     parser.add_argument('--corruption', type=int, default=0)
     parser.add_argument('--split', type=int, default=50)
     return parser.parse_args()
